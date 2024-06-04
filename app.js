@@ -3,14 +3,10 @@ const app = express();
 const cors = require("cors");
 const colors = require("colors");
 const connectDB = require("./config/connectDB.js");
-const mongoose = require('mongoose');
-require('dotenv').config()
 
 const PORT = 8000;
 
-mongoose.connect(process.env.DB_URL)
-.then(()=>{console.log("DB connected")})
-.catch((err)=>{console.log(err)})
+connectDB();
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
